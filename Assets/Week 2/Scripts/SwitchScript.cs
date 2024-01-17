@@ -10,16 +10,16 @@ public class SwitchScript : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.green;
+        spriteRenderer.color = new Color(255, 255, 0, .2f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        spriteRenderer.color = new Color(255, 255, 0, .2f);
+        spriteRenderer.color = new Color(255, 0, 0, .2f);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        spriteRenderer.color = new Color(255, 0, 0, .2f);
+        spriteRenderer.color = new Color(255, 255, 0, .2f);
     }
 }
