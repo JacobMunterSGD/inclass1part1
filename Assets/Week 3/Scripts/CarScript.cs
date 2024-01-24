@@ -18,7 +18,7 @@ public class CarScript : MonoBehaviour
     void Update()
     {
 
-        steering = Input.GetAxis("Horizontal");
+        steering = -(Input.GetAxis("Horizontal"));
         acceleration = Input.GetAxis("Vertical");
 
     }
