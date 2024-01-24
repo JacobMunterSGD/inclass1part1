@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 269078658}
   - component: {fileID: 269078660}
   - component: {fileID: 269078659}
+  - component: {fileID: 269078661}
   m_Layer: 0
   m_Name: Central Reservation
   m_TagString: Untagged
@@ -196,7 +197,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1277,6 +1278,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!60 &269078661
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269078657}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 7.7913566, y: 2.6889412}
+      - {x: 7.307247, y: 3.0023541}
+      - {x: -7.324827, y: 2.9878168}
+      - {x: -7.753462, y: 2.6903381}
+      - {x: -8.007462, y: 2.1275496}
+      - {x: -7.9663515, y: -2.2346575}
+      - {x: -7.750105, y: -2.778104}
+      - {x: -7.2018223, y: -3.0031657}
+      - {x: 7.274758, y: -2.978276}
+      - {x: 7.7179785, y: -2.7298403}
+      - {x: 8.034035, y: -2.2306583}
+      - {x: 8.015327, y: 2.3894901}
+  m_UseDelaunayMesh: 0
 --- !u!1 &285227216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,7 +1346,7 @@ GameObject:
   - component: {fileID: 285227218}
   - component: {fileID: 285227217}
   m_Layer: 0
-  m_Name: car_blue_1
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,6 +1430,7 @@ GameObject:
   - component: {fileID: 459288093}
   - component: {fileID: 459288095}
   - component: {fileID: 459288094}
+  - component: {fileID: 459288096}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -4195,6 +4254,58 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!68 &459288096
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459288092}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -10.822535, y: -5.16878}
+  - {x: -10.872628, y: 4.9575562}
+  - {x: -10.738107, y: 5.7676325}
+  - {x: -10.076814, y: 5.863869}
+  - {x: 10.068268, y: 5.8449984}
+  - {x: 10.651449, y: 5.6503882}
+  - {x: 10.820567, y: 5.308761}
+  - {x: 10.814292, y: -5.160544}
+  - {x: 10.651496, y: -5.6303573}
+  - {x: 10.154962, y: -5.820091}
+  - {x: -10.091052, y: -5.840192}
+  - {x: -10.606489, y: -5.658767}
+  - {x: -10.824532, y: -5.2538753}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1315655880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4268,7 +4379,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
