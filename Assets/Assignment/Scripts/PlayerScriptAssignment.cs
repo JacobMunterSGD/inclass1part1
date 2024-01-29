@@ -10,6 +10,7 @@ public class PlayerScriptAssignment : MonoBehaviour
     public float force;
     public Rigidbody2D rigidBody;
     public float jumpForce;
+    bool jumpDown;
 
     bool isOnGround;
     public Transform groundCheck;
@@ -26,7 +27,23 @@ public class PlayerScriptAssignment : MonoBehaviour
         inputDirectionX = new Vector2(Input.GetAxis("Horizontal"), 0);
         inputDirectionY = new Vector2(0, Input.GetAxisRaw("Vertical"));
 
-        Debug.Log(inputDirectionY);
+        jumpDown = Input.GetKeyDown(KeyCode.Space);
+
+        //Debug.Log(Input.GetKeyDown(KeyCode.Space));
+
+        //Debug.Log(inputDirectionY);
+
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpDown = true;
+            Debug.Log(jumpDown);
+        }
+        else
+        {
+            jumpDown = false;
+        }*/
+
+
 
     }
 
@@ -37,13 +54,21 @@ public class PlayerScriptAssignment : MonoBehaviour
             rigidBody.AddForce(inputDirectionX * force * Time.deltaTime);
         }
 
-        if (inputDirectionY.y == 1 && isOnGround == true)
+        
+
+        if (jumpDown == true && isOnGround == true)
         {
 
-            rigidBody.AddForce(inputDirectionY * jumpForce * Time.deltaTime);
+            //rigidBody.AddForce(inputDirectionY * jumpForce * Time.deltaTime);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
 
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 
 }
