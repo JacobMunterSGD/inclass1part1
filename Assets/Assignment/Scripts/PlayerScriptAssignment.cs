@@ -21,6 +21,9 @@ public class PlayerScriptAssignment : MonoBehaviour
     public GameObject missilePrefab;
     public Transform spawn;
 
+    Vector2 previousBlast;
+    public float blastForce;
+    //float maxBlast = 5;
 
     void Update()
     {
@@ -31,20 +34,6 @@ public class PlayerScriptAssignment : MonoBehaviour
         inputDirectionY = new Vector2(0, Input.GetAxisRaw("Vertical"));
 
         jumpDown = Input.GetKeyDown(KeyCode.Space);
-
-        //Debug.Log(Input.GetKeyDown(KeyCode.Space));
-
-        //Debug.Log(inputDirectionY);
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            jumpDown = true;
-            Debug.Log(jumpDown);
-        }
-        else
-        {
-            jumpDown = false;
-        }*/
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround == true)
         {
@@ -61,7 +50,6 @@ public class PlayerScriptAssignment : MonoBehaviour
             Instantiate(missilePrefab, spawn.position, spawn.rotation);
         }
 
-
     }
 
     void FixedUpdate()
@@ -71,9 +59,32 @@ public class PlayerScriptAssignment : MonoBehaviour
             rigidBody.AddForce(inputDirectionX * force * Time.deltaTime);
         }
 
-        
-
-        
+        //var for previous dir value
+        if (previousBlast != MissileScriptAssignment.blastDirection)
+        {
+            Vector2 tempBlast = new Vector2(MissileScriptAssignment.blastDirection.x, MissileScriptAssignment.blastDirection.y);
+            /*if (tempBlast.x > maxBlast)
+            {
+                tempBlast.x = maxBlast;
+            }
+            if (tempBlast.y > maxBlast)
+            {
+                tempBlast.y = maxBlast;
+            }
+            if (tempBlast.x < -maxBlast)
+            {
+                tempBlast.x = -maxBlast;
+            }
+            if (tempBlast.y < -maxBlast)
+            {
+                tempBlast.y = -maxBlast;
+            }*/
+            //UnityEngine.Debug.Log("temp" + tempBlast);
+            //UnityEngine.Debug.Log("magnitude " + tempBlast.magnitude);
+            //float tempDistance = 1 / tempBlast.magnitude;
+            rigidBody.AddForce(tempBlast.normalized * blastForce, ForceMode2D.Impulse);
+            previousBlast = MissileScriptAssignment.blastDirection;
+        }
 
     }
 

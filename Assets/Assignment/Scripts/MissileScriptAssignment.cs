@@ -30,7 +30,7 @@ public class MissileScriptAssignment : MonoBehaviour
 
     public Collider2D coll;
 
-    public Vector2 dir;
+    public static Vector2 blastDirection;
 
 
 
@@ -113,8 +113,8 @@ public class MissileScriptAssignment : MonoBehaviour
         //explosion
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-        dir = player.position - circle.transform.position;
-        UnityEngine.Debug.Log(dir);
+        blastDirection = player.position - circle.transform.position;
+        //UnityEngine.Debug.Log("original blast " + blastDirection);
 
         //Instantiate(explosionPrefab);
         //Destroy(gameObject);
