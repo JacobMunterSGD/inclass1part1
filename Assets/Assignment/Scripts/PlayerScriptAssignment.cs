@@ -18,11 +18,14 @@ public class PlayerScriptAssignment : MonoBehaviour
 
     public float maxHorizontalSpeed;
 
+    public GameObject missilePrefab;
+    public Transform spawn;
+
 
     void Update()
     {
 
-        isOnGround = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 0.4f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        isOnGround = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
 
         inputDirectionX = new Vector2(Input.GetAxis("Horizontal"), 0);
         inputDirectionY = new Vector2(0, Input.GetAxisRaw("Vertical"));
@@ -43,6 +46,20 @@ public class PlayerScriptAssignment : MonoBehaviour
             jumpDown = false;
         }*/
 
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround == true)
+        {
+
+            //rigidBody.AddForce(inputDirectionY * jumpForce * Time.deltaTime);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+
+        }
+
+
+        // shoot missile
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(missilePrefab, spawn.position, spawn.rotation);
+        }
 
 
     }
@@ -56,13 +73,7 @@ public class PlayerScriptAssignment : MonoBehaviour
 
         
 
-        if (jumpDown == true && isOnGround == true)
-        {
-
-            //rigidBody.AddForce(inputDirectionY * jumpForce * Time.deltaTime);
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-
-        }
+        
 
     }
 
