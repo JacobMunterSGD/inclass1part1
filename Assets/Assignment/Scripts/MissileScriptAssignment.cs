@@ -27,7 +27,7 @@ public class MissileScriptAssignment : MonoBehaviour
         //inputDirection.y = Input.GetAxisRaw("Vertical");
 
         inDir2 = launchTransform.transform.rotation.z;
-        UnityEngine.Debug.Log(inDir2);
+        //UnityEngine.Debug.Log(inDir2);
 
 
         if (inDir2 == 0)
@@ -58,9 +58,13 @@ public class MissileScriptAssignment : MonoBehaviour
 
     void FixedUpdate()
     {
-
         rigidBody.MovePosition(rigidBody.position + missileDirection);
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        Destroy(gameObject);
 
     }
 }
