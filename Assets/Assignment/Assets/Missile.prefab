@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   launchTransform: {fileID: 0}
+  explosionPrefab: {fileID: 1697866182459581507, guid: ba3f2645de5163a4c9629f82e6ef01e3, type: 3}
+  circle: {fileID: 3380103007273342108}
+  coll: {fileID: -6110055758279605685}
 --- !u!50 &6165302892283041380
 Rigidbody2D:
   serializedVersion: 4

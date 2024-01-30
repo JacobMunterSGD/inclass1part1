@@ -56,7 +56,7 @@ public class PlayerScriptAssignment : MonoBehaviour
 
 
         // shoot missile
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Instantiate(missilePrefab, spawn.position, spawn.rotation);
         }

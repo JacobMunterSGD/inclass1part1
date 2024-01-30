@@ -7,7 +7,7 @@ public class MissileScriptAssignment : MonoBehaviour
 {
     public float speed;
     Vector2 missileDirection;
-    Vector2 inputDirection;
+    //Vector2 inputDirection;
 
     float inDir2;
 
@@ -17,14 +17,32 @@ public class MissileScriptAssignment : MonoBehaviour
 
     Rigidbody2D rigidBody;
 
+    public GameObject explosionPrefab;
+
+    bool missileMode = true;
+
+    public Transform player;
+
+    public GameObject circle;
+    float growthSpeed = 10;
+    float shrinkSpeed = -2;
+    bool growing = true;
+
+    public Collider2D coll;
+
+    public Vector2 dir;
+
+
+
     private void Start()
     {
         launchTransform = GameObject.FindGameObjectWithTag("Launcher").GetComponent<Transform>();
 
+        
+
         rigidBody = GetComponent<Rigidbody2D>();
 
-        //inputDirection.x = Input.GetAxisRaw("Horizontal");
-        //inputDirection.y = Input.GetAxisRaw("Vertical");
+
 
         inDir2 = launchTransform.transform.rotation.z;
         //UnityEngine.Debug.Log(inDir2);
@@ -58,13 +76,48 @@ public class MissileScriptAssignment : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigidBody.MovePosition(rigidBody.position + missileDirection);
+        if (missileMode)
+        {
+            rigidBody.MovePosition(rigidBody.position + missileDirection);
+        }
+        else
+        {
+            if (circle.transform.localScale.x < 4 && growing)
+            {
+                circle.transform.localScale += new Vector3(growthSpeed, growthSpeed, 0) * Time.deltaTime;
+            }
+            else
+            {
+                growing = false;
+            }
+
+            if (circle.transform.localScale.x > 0 && growing == false)
+            {
+                circle.transform.localScale += new Vector3(shrinkSpeed, shrinkSpeed, 0) * Time.deltaTime;
+            }
+            else if (circle.transform.localScale.x < 0 && growing == false)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        Destroy(gameObject);
+
+        missileMode = false;
+        coll.enabled = !coll.enabled;
+
+        //explosion
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        dir = player.position - circle.transform.position;
+        UnityEngine.Debug.Log(dir);
+
+        //Instantiate(explosionPrefab);
+        //Destroy(gameObject);
 
     }
 }
