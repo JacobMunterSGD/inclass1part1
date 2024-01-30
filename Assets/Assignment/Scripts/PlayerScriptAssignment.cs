@@ -88,9 +88,9 @@ public class PlayerScriptAssignment : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        UnityEngine.Debug.Log("trigger works");
     }
 
 }
