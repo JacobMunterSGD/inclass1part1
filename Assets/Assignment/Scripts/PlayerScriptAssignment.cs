@@ -35,7 +35,7 @@ public class PlayerScriptAssignment : MonoBehaviour
 
         jumpDown = Input.GetKeyDown(KeyCode.Space);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround == true)
+        if (Input.GetKeyDown(KeyCode.Z) && isOnGround == true)
         {
 
             //rigidBody.AddForce(inputDirectionY * jumpForce * Time.deltaTime);
@@ -45,7 +45,7 @@ public class PlayerScriptAssignment : MonoBehaviour
 
 
         // shoot missile
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             Instantiate(missilePrefab, spawn.position, spawn.rotation);
         }
@@ -91,6 +91,9 @@ public class PlayerScriptAssignment : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         UnityEngine.Debug.Log("trigger works");
+
+        transform.position = new Vector3(3, 1.1f, 0);
+        rigidBody.velocity = new Vector2(0, 0);
     }
 
 }
